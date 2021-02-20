@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { User } from '../../models/user';
 import { UserService } from '../../services/user.service';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-main-content',
@@ -15,9 +16,15 @@ export class MainContentComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      const id = params['id'];
+      let id = params['id'];
 
-      this.service.users.subscribe((users) => {
+      if (!id) {
+        id = 1;
+      }
+
+      this.user = null;
+
+      this.service.users.pipe(delay(500)).subscribe((users) => {
         if (!users.length) {
           return;
         }

@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { Routes, RouterModule } from '@angular/router';
 import { UserService } from './services/user.service';
+import { NotesComponent } from './components/notes/notes.component';
 
 const routes: Routes = [
   {
@@ -38,6 +39,7 @@ const routes: Routes = [
     ToolbarComponent,
     MainContentComponent,
     SidenavComponent,
+    NotesComponent,
   ],
   imports: [
     CommonModule,
